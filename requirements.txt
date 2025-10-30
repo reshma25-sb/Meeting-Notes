@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+openai   # or the official 'openai' package or 'openai' client used below
+requests
+pydantic
+streamlit
+python-multipart
