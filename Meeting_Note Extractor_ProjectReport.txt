@@ -1,0 +1,138 @@
+PROJECT TITLE:
+Meeting Notes and Action Item Extractor
+
+PROJECT OBJECTIVE:
+To develop an AI-based system that converts meeting audio into structured notes and actionable items using Whisper for transcription and OpenAI GPT models for text structuring.
+
+TOOLS AND TECHNOLOGIES USED
+
+Programming Language: Python 3.12
+
+Framework: FastAPI
+
+AI Models:
+
+Whisper (for audio transcription)
+
+GPT-4o-mini (for meeting summarization and extraction)
+
+Libraries:
+
+openai
+
+fastapi
+
+uvicorn
+
+dotenv
+
+json, pathlib, tempfile
+
+Environment:
+
+Virtual Environment (.venv)
+
+Localhost (for API testing)
+
+SYSTEM COMPONENTS
+
+Audio Input Module:
+
+Accepts meeting audio files (mp3, wav, etc.) through an API endpoint.
+
+Transcription Module:
+
+Uses Whisper model to convert audio to text.
+
+Summarization and Structuring Module:
+
+Uses GPT-4o-mini to convert raw transcripts into structured notes:
+
+Summary
+
+Attendees
+
+Decisions
+
+Action Items (description, assignee, due date, confidence)
+
+Agenda Items
+
+Output Module:
+
+Returns structured meeting notes as a JSON response.
+
+LEARNING LOG FORMAT
+
+Date:
+Task/Phase:
+Description:
+Tools Used:
+Issue Faced:
+Root Cause:
+Rectification Steps:
+Outcome:
+Remarks:
+
+LEARNING LOG ENTRIES (Example placeholders)
+
+Task/Phase: Environment Setup
+Description: Setting up Python virtual environment and dependencies installation
+Tools Used: Python 3.12, pip, venv
+Issue Faced: pip install dependency conflicts
+Root Cause: Version mismatch between openai and transformers
+Rectification Steps: Upgraded pip, reinstalled compatible versions
+Outcome: Environment setup completed successfully
+Remarks: Ensure to use latest compatible versions
+
+Task/Phase: Whisper Transcription Setup
+Description: Integrated Whisper model for transcription
+Tools Used: OpenAI API, Whisper-1
+Issue Faced: API key not recognized
+Root Cause: Missing .env configuration
+Rectification Steps: Added .env file with OPENAI_API_KEY
+Outcome: Whisper model transcribing correctly
+Remarks: Always check for valid API key
+
+Task/Phase: GPT-based Structuring
+Description: Extract structured meeting notes using GPT model
+Tools Used: GPT-4o-mini
+Issue Faced: JSON parsing errors in output
+Root Cause: Model returning non-JSON text occasionally
+Rectification Steps: Adjusted system prompt to enforce valid JSON structure
+Outcome: Consistent JSON output
+Remarks: Use "Return only valid JSON" in prompt
+
+Task/Phase: FastAPI Integration
+Description: Built /transcribe endpoint to handle audio uploads
+Tools Used: FastAPI, Uvicorn
+Issue Faced: File handling errors for temporary audio storage
+Root Cause: Missing tempfile handling permissions
+Rectification Steps: Used NamedTemporaryFile correctly and ensured cleanup
+Outcome: Endpoint functional
+Remarks: Tested API with Postman
+
+Task/Phase: Testing & Validation
+Description: End-to-end testing with various meeting recordings
+Tools Used: Postman, Localhost
+Issue Faced: Large audio files timing out
+Root Cause: Request timeout limit exceeded
+Rectification Steps: Increased FastAPI timeout and chunked upload
+Outcome: Successfully processed long meetings
+Remarks: Optimize API performance
+
+FINAL OUTCOME
+
+Successfully developed a Meeting Notes and Action Item Extractor application.
+
+The system accurately converts meeting audio into structured notes with high precision.
+
+Integration of Whisper and GPT ensures smooth end-to-end automation.
+
+FUTURE ENHANCEMENTS
+
+Integrate with Google Meet or Zoom recordings directly
+
+Add UI for uploading files and viewing structured summaries
+
+Include automatic task export to task management tools (e.g., Trello, Asana)
